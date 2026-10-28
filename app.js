@@ -10,6 +10,7 @@ import {
 import { iniciarPerfil } from "./scripts/perfil.js";
 import { iniciarAmigos, detenerAmigos } from "./scripts/amigos.js";
 import { iniciarChat, detenerChat } from "./scripts/chat.js";
+import { iniciarGrupos, detenerGrupos } from "./scripts/grupos.js";
 import { revisarTexto, mensajeDeBloqueo } from "./scripts/moderacion.js";
 
 // 1. ELEMENTOS DE LA PÁGINA
@@ -30,6 +31,7 @@ onAuthStateChanged(auth, (usuario) => {
         if (dejarDeEscuchar) dejarDeEscuchar();
         detenerAmigos();
         detenerChat();
+        detenerGrupos();
         window.location.replace("login.html");
         return;
     }
@@ -42,6 +44,7 @@ onAuthStateChanged(auth, (usuario) => {
         iniciarPerfil(usuario, nombreUsuario);
         iniciarChat(usuario);
         iniciarAmigos(usuario);
+        iniciarGrupos(usuario);
     }
 });
 
@@ -49,6 +52,7 @@ botonSalir.addEventListener("click", async () => {
     if (dejarDeEscuchar) dejarDeEscuchar();
     detenerAmigos();
     detenerChat();
+    detenerGrupos();
     await signOut(auth);
 });
 

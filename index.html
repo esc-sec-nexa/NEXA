@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-grupos.css">
 </head>
 <body class="cargando">
     <div id="aviso-carga" class="aviso-carga">Cargando NEXA...</div>
@@ -15,7 +16,7 @@
 
     <!-- 1. BARRA SUPERIOR: logo + menú -->
     <header class="barra">
-        <a class="logo" href="#inicio"><img class="logo-img" src="assets/images/nexa logo.png" alt="" width="40" height="40">NEXA</a>
+        <a class="logo" href="#inicio"><img class="logo-img" src="assets/images/nexa_logo.png" alt="" width="40" height="40">NEXA</a>
 
         <nav class="menu" aria-label="Navegación principal">
             <ul>
@@ -112,7 +113,36 @@
         <!-- GRUPOS -->
         <section id="grupos" class="seccion">
             <h2>Grupos</h2>
-            <p>Grupos por materia o especialidad técnica.</p>
+            <p id="mensaje-grupos" class="mensaje" role="alert"></p>
+
+            <!-- Lista de grupos -->
+            <div id="vista-grupos">
+                <p class="nota">Crea grupos por materia o especialidad. Los <strong>públicos</strong> los puede ver y unirse cualquiera; los <strong>privados</strong> solo se ven con un código de invitación. Dentro de cada grupo puedes crear subgrupos, publicar avisos, comentar y dar me gusta.</p>
+                <details class="nuevo-grupo">
+                    <summary>+ Crear un grupo</summary>
+                    <div id="nuevo-grupo"></div>
+                </details>
+                <details class="nuevo-grupo">
+                    <summary>🔑 Unirme con un código</summary>
+                    <div id="unirse-codigo"></div>
+                </details>
+                <h3>Mis grupos</h3>
+                <div id="lista-mis-grupos">
+                    <p class="vacio">Cargando grupos...</p>
+                </div>
+                <h3>Explorar grupos públicos</h3>
+                <div id="lista-explorar"></div>
+            </div>
+
+            <!-- Un grupo abierto -->
+            <div id="vista-grupo" hidden>
+                <nav id="grupo-migas" class="migas" aria-label="Ruta del grupo"></nav>
+                <h3 id="grupo-titulo"></h3>
+                <p id="grupo-desc" class="nota"></p>
+                <div id="grupo-acciones" class="pub-acciones"></div>
+                <div id="grupo-pestanas" class="pestanas"></div>
+                <div id="grupo-contenido"></div>
+            </div>
         </section>
 
         <!-- TAREAS -->
