@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar a NEXA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="pagina-acceso">
+
+    <main class="acceso">
+        <img class="logo-login" src="assets/images/nexa_logo.png" alt="NEXA" width="130">
+        <p class="eslogan">Conecta, comparte y aprende con tus compañeros.</p>
+
+        <div class="tarjeta-acceso">
+
+            <!-- Pestañas: cambian entre los dos formularios -->
+            <div class="pestanas">
+                <button type="button" id="pestana-entrar" class="pestana activa">Iniciar sesión</button>
+                <button type="button" id="pestana-registro" class="pestana">Crear cuenta</button>
+            </div>
+
+            <!-- FORMULARIO: iniciar sesión -->
+            <form id="form-entrar" class="formulario">
+                <label for="entrar-correo">Correo electrónico</label>
+                <input id="entrar-correo" type="email" autocomplete="email" required>
+
+                <label for="entrar-clave">Contraseña</label>
+                <input id="entrar-clave" type="password" autocomplete="current-password" required>
+
+                <button type="submit" class="boton-principal">Iniciar sesión</button>
+            </form>
+
+            <!-- FORMULARIO: crear cuenta -->
+            <form id="form-registro" class="formulario" hidden>
+                <label for="registro-nombre">Nombre</label>
+                <input id="registro-nombre" type="text" autocomplete="name" maxlength="40" required>
+
+                <label for="registro-rol">Tipo de cuenta</label>
+                <select id="registro-rol" required>
+                    <option value="estudiante">Estudiante</option>
+                    <option value="maestro">Maestro/a</option>
+                    <option value="padre">Padre o madre</option>
+                </select>
+                <p class="nota">Las cuentas de maestro y de padre o madre (solo mayores de 18) se activan tras una revisión.</p>
+
+                <label for="registro-nacimiento">Fecha de nacimiento</label>
+                <input id="registro-nacimiento" type="date" autocomplete="bday" required>
+                <p class="nota">NEXA es para personas de 13 años o más. No guardamos tu fecha, solo si eres menor de edad.</p>
+
+                <label for="registro-correo">Correo electrónico</label>
+                <input id="registro-correo" type="email" autocomplete="email" required>
+
+                <label for="registro-clave">Contraseña (mínimo 6 caracteres)</label>
+                <input id="registro-clave" type="password" autocomplete="new-password" minlength="6" required>
+
+                <button type="submit" class="boton-principal">Crear cuenta</button>
+            </form>
+
+            <!-- Aquí se muestran los errores -->
+            <p id="mensaje" class="mensaje" role="alert"></p>
+        </div>
+    </main>
+
+    <!-- type="module" es obligatorio porque auth.js usa import -->
+    <script type="module" src="auth.js"></script>
+</body>
+</html>

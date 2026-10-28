@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="cargando">
+    <div id="aviso-carga" class="aviso-carga">Cargando NEXA...</div>
+
+
+    <!-- 1. BARRA SUPERIOR: logo + menú -->
+    <header class="barra">
+        <a class="logo" href="#inicio"><img class="logo-img" src="assets/images/nexa logo.png" alt="" width="40" height="40">NEXA</a>
+
+        <nav class="menu" aria-label="Navegación principal">
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#perfil">Perfil</a></li>
+                <li><a href="#amigos">Amigos</a></li>
+                <li><a href="#mensajes">Mensajes</a></li>
+                <li><a href="#aulas">Aulas</a></li>
+                <li><a href="#grupos">Grupos</a></li>
+                <li><a href="#tareas">Tareas</a></li>
+            </ul>
+        </nav>
+
+        <!-- Usuario con sesión abierta -->
+        <div class="usuario">
+            <span id="nombre-usuario" class="nombre-usuario"></span>
+            <button id="boton-salir" class="boton-salir" type="button">Cerrar sesión</button>
+        </div>
+    </header>
+
+    <!-- 2. CONTENIDO PRINCIPAL -->
+    <main>
+
+        <!-- INICIO -->
+        <section id="inicio" class="seccion">
+            <h1>Bienvenido a NEXA</h1>
+            <p class="presentacion">La red social para estudiantes: conecta, comparte y aprende.</p>
+
+            <!-- Área para crear publicaciones -->
+            <div class="crear-publicacion">
+                <label for="texto-publicacion" class="sr-only">Escribe tu publicación</label>
+                <textarea id="texto-publicacion" placeholder="¿Qué quieres compartir?" rows="3" maxlength="500"></textarea>
+                <button id="boton-publicar" type="button">Publicar</button>
+                <p id="mensaje-publicar" class="mensaje" role="alert"></p>
+            </div>
+
+            <!-- Aquí aparecerán las publicaciones -->
+            <div id="lista-publicaciones">
+                <p class="vacio">Cargando publicaciones...</p>
+            </div>
+        </section>
+
+        <!-- PERFIL -->
+        <section id="perfil" class="seccion">
+            <h2>Mi perfil</h2>
+            <p id="perfil-rol" class="pub-fecha"></p>
+            <form id="form-perfil" class="formulario">
+                <label for="perfil-nombre">Nombre</label>
+                <input id="perfil-nombre" type="text" maxlength="40" required>
+
+                <label for="perfil-descripcion">Descripción</label>
+                <textarea id="perfil-descripcion" rows="3" maxlength="200" placeholder="Cuéntales quién eres y qué estudias"></textarea>
+
+                <button type="submit" class="boton-principal">Guardar perfil</button>
+                <p id="mensaje-perfil" class="mensaje" role="alert"></p>
+            </form>
+        </section>
+
+        <!-- AMIGOS -->
+        <section id="amigos" class="seccion">
+            <h2>Amigos</h2>
+            <input id="buscar-estudiante" class="buscador" type="search" placeholder="Buscar estudiantes por nombre" aria-label="Buscar estudiantes">
+            <div id="lista-estudiantes">
+                <p class="vacio">Cargando estudiantes...</p>
+            </div>
+        </section>
+
+        <!-- MENSAJES -->
+        <section id="mensajes" class="seccion">
+            <h2>Mensajes</h2>
+            <p class="nota">Solo puedes chatear con tus amigos. Se bloquean los mensajes con datos personales, ubicaciones, amenazas o lenguaje ofensivo.</p>
+            <div class="chat">
+                <div id="lista-chats" class="lista-chats">
+                    <p class="vacio">Cargando amigos...</p>
+                </div>
+                <div id="panel-chat" class="panel-chat" hidden>
+                    <h3 id="chat-titulo"></h3>
+                    <div id="chat-mensajes" class="chat-mensajes" aria-live="polite"></div>
+                    <form id="form-chat" class="form-chat">
+                        <input id="chat-texto" type="text" maxlength="500" placeholder="Escribe un mensaje" aria-label="Mensaje" autocomplete="off" required>
+                        <button type="submit" class="btn-accion principal">Enviar</button>
+                    </form>
+                    <p id="mensaje-chat" class="mensaje" role="alert"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- AULAS -->
+        <section id="aulas" class="seccion">
+            <h2>Aulas</h2>
+            <p>Tus aulas virtuales estarán aquí.</p>
+        </section>
+
+        <!-- GRUPOS -->
+        <section id="grupos" class="seccion">
+            <h2>Grupos</h2>
+            <p>Grupos por materia o especialidad técnica.</p>
+        </section>
+
+        <!-- TAREAS -->
+        <section id="tareas" class="seccion">
+            <h2>Tareas</h2>
+            <p>Tareas publicadas y entregas.</p>
+        </section>
+
+    </main>
+
+    <script type="module" src="app.js"></script>
+    <script>
+        // Si en 6 segundos no cargó, avisamos en vez de dejar la pantalla en blanco
+        setTimeout(function () {
+            if (document.body.classList.contains("cargando")) {
+                document.getElementById("aviso-carga").textContent =
+                    "NEXA no pudo cargar. Presiona F12, abre Console y revisa el error en rojo.";
+            }
+        }, 6000);
+    </script>
+</body>
+</html>
